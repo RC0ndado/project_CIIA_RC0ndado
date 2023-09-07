@@ -30,6 +30,8 @@ def modeloPrediccion():
             25,
             67,
             0.9968,
+            1,
+            0.4,
             contenido["pH"],
             contenido["sulphates"],
             contenido["alcohol"],
