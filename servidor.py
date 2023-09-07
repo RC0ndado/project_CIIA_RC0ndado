@@ -17,7 +17,7 @@ def holamundo():
 
 # Envío de datos a través de JSON
 @servidorWeb.route("/modeloForm", methods=["POST"])
-def modeloPrediccion():
+def modeloForm():
     # Procesar los datos de entrada
     contenido = request.json
     print(contenido)
