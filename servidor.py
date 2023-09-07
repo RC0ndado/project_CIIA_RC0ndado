@@ -11,7 +11,7 @@ servidorWeb = Flask(__name__)
 
 
 @servidorWeb.route("/holamundo", methods=["GET"])
-def formulario():
+def holamundo():
     return render_template("pagina1.html")
 
 
@@ -21,7 +21,25 @@ def modeloPrediccion():
     # Procesar los datos de entrada
     contenido = request.json
     print(contenido)
-    return jsonify({"resultado": "Hola"})
+    datrosEntrada = np.array(
+        [
+            0.88,
+            0,
+            2.6,
+            0.098,
+            25,
+            67,
+            0.9968,
+            contenido["pH"],
+            contenido["sulphates"],
+            contenido["alcohol"],
+        ]
+    )
+
+    # Utilizar el modelo
+    resultado = dt.predict(datrosEntrada.reshape(1, -1))
+    print(datrosEntrada)
+    return jsonify({"resultado": str(resultado[0])})
 
 
 if __name__ == "__main__":
